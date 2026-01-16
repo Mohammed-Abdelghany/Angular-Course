@@ -1,0 +1,23 @@
+<app-item-dashboard [title]="'Support Tickets'" [img]="{ src: 'list.png', alt: 'Support tickets icon' }">
+    <div class="dashboard-content">
+
+        <div class="tickets-list" id="tickets">
+            <ul>
+                @for (ticket of tickets; track ticket.id) {
+                <li>
+                    <app-ticket [ticketView]="ticket" (close)="onCloseTicket(ticket.id)">
+                    </app-ticket>
+                </li>
+                }
+                @empty {
+                <p>No tickets</p>
+                }
+            </ul>
+        </div>
+
+        <div class="new-ticket" id="new-ticket">
+            <app-new-ticket (add)="onAdd($event)"></app-new-ticket>
+        </div>
+
+    </div>
+</app-item-dashboard>
